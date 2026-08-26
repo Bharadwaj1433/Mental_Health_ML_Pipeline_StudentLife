@@ -1,171 +1,88 @@
-Mental Health ML Pipeline – StudentLife
+# Mental Health ML Pipeline – StudentLife
 
-A machine learning pipeline for predicting next-day mood using behavioral and mental-state features inspired by the StudentLife dataset.
+A machine learning project for predicting **next-day mood** using behavioral and mental-health related features inspired by the StudentLife dataset.
 
-Overview
+## Project Overview
 
-This project demonstrates an end-to-end ML workflow for student mental-health trend analysis:
+This project demonstrates an end-to-end machine learning pipeline including:
 
-Data generation and preparation
+- Data preparation
+- Data cleaning
+- Feature engineering
+- Model training
+- Model evaluation
+- Feature importance analysis
+- Data visualization
 
-Data cleaning and missing-value handling
+> **Note:** The current project uses synthetic StudentLife-like data for demonstration and does not directly use the original StudentLife dataset.
 
-Feature engineering
+## Dataset
 
-Next-day mood prediction
+The dataset contains:
 
-Model training and evaluation
+- **48 users**
+- **70 days per user**
+- **3,360 records**
+- Stress, mood, exercise, and walking features
+- Simulated missing values
 
-Feature importance analysis
+After preprocessing and feature engineering, the final dataset contains **3,264 records**.
 
-Visualization of results
+## Features
 
-Note: The current notebook uses synthetic StudentLife-like data for demonstration. It does not use the original StudentLife dataset directly.
+The model uses:
 
-Dataset
+- Stress
+- Previous-day stress
+- 3-day average stress
+- Previous-day mood
+- 3-day average mood
+- Exercise
+- Walking
 
-The notebook generates:
+### Target
 
-48 users
+**Next-day mood**
 
-70 days per user
+## Machine Learning Models
 
-3,360 raw records
+The following models are compared:
 
-Features: stress, mood, exercise, and walk
+1. Mean Baseline
+2. Linear Regression
+3. Random Forest Regressor
 
-Missing values are intentionally introduced to simulate real-world data
+## Results
 
-After preprocessing and target creation, the final modeling dataset contains 3,264 records.
+| Model | RMSE | R² |
+|---|---:|---:|
+| Mean Baseline | 0.6233 | -0.0013 |
+| Linear Regression | **0.5510** | **0.2177** |
+| Random Forest | 0.5586 | 0.1958 |
 
-Feature Engineering
+### Best Model
 
-The model uses 7 features:
+**Linear Regression**
 
-stress
+- RMSE: **0.5510**
+- R²: **0.2177**
+- RMSE improvement over baseline: **11.61%**
 
-prev_stress
+## Key Findings
 
-stress_3day_avg
+- Previous mood and stress are useful for predicting next-day mood.
+- Rolling 3-day averages help capture short-term trends.
+- Mood and stress history were more useful than individual behavioral features in this experiment.
+- Linear Regression performed slightly better than Random Forest.
 
-prev_mood
+## Technologies Used
 
-mood_3day_avg
-
-exercise
-
-walk
-
-The target is next-day mood.
-
-Models
-
-The project compares:
-
-Mean Baseline
-
-Linear Regression
-
-Random Forest Regressor
-
-Results
-
-Model
-
-RMSE
-
-R²
-
-Baseline
-
-0.6233
-
--0.0013
-
-Linear Regression
-
-0.5510
-
-0.2177
-
-Random Forest
-
-0.5586
-
-0.1958
-
-Best model: Linear Regression
-
-It achieved an 11.61% reduction in RMSE compared with the baseline.
-
-Key Findings
-
-mood_3day_avg and stress_3day_avg are among the most important predictive features.
-
-Previous mood and stress values provide useful temporal information.
-
-Rolling averages help capture short-term trends in mood and stress.
-
-Behavioral features such as exercise and walking are included as potential indicators of mental well-being.
-
-Visualizations
-
-The notebook generates visualizations for:
-
-Linear Regression feature importance
-
-Random Forest feature importance
-
-Predicted vs. actual mood
-
-Model performance comparison
-
-Stress and mood trends over time
-
-Technologies
-
+```text
 Python
-
 Pandas
-
 NumPy
-
 Matplotlib
-
 Seaborn
-
 Scikit-learn
-
-Jupyter Notebook / Google Colab
-
-How to Run
-
-Clone the repository
-
-git clone https://github.com/Bharadwaj1433/Mental_Health_ML_Pipeline_StudentLife.git
-cd Mental_Health_ML_Pipeline_StudentLife
-
-Run the notebook
-
-Open:
-
-Mental_Health_ML_Pipeline_StudentLife.ipynb
-
-The notebook can be run using Jupyter Notebook or Google Colab.
-
-Project Structure
-
-Mental_Health_ML_Pipeline_StudentLife/
-│
-├── Mental_Health_ML_Pipeline_StudentLife.ipynb
-└── README.md
-
-Limitations
-
-This is a demonstration project using synthetic data. The results should not be interpreted as clinical predictions or medical advice.
-
-Author
-
-Bharadwaj Rachakonda
-
-GitHub: Bharadwaj1433
+Jupyter Notebook
+Google Colab
